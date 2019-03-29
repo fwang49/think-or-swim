@@ -1,0 +1,9 @@
+def minv1 = min(volume, volume[1]);
+def minv = min(minv1, volume[2]);
+# def minv = lowest(volume, 3);
+
+plot data = close >= 3  and minv >= 100000 and  average(close, 7) / average(close, 65) >= 1.05 and close > open and 
+close > close[1] and close /close[1] > close[1]/close[2] and close[1]/close[2] < 1.02 and 
+close[1] <= open[1]  and (close -low)/(high -low)>= 0.75 and  close >= average(close, 9)
+and close >= average(close, 150)
+;
