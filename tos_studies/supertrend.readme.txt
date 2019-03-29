@@ -1,0 +1,9 @@
+What's new in V03.10.2015
+
+Added Bubbles to mark entry and exit prices. Doesn't give much time to follow into trade, but better than guessing.
+Altered default settings for values that made more sense on Intraday Futures. Added Color and ColorBars.
+Supertrend Indicator: shows trend direction and gives buy or sell signals according to that. It is based on a combination of the average price rate in the current period along with a volatility indicator. The ATR indicator is most commonly used as volatility indicator. The values are calculated as follows:
+
+Up = (HIGH + LOW) / 2 + Multiplier * ATR 
+Down = (HIGH + LOW) / 2 – Multiplier * ATR 
+When the change of trend occurs, the indicator flips
