@@ -1,0 +1,36 @@
+declare lower;
+
+input price = close;
+
+input pcThresh = 1.04;
+
+def Vol = volume;
+
+input volAvgLength = 50;
+
+input vBOThresh = 3.0;
+
+input VolThresh = 300000;
+
+def VolAvg = Average(Vol, volAvgLength);
+
+def pBOPos = price > pcThresh*price[1];
+
+def pBONeg = price < price[1]/pcThresh;
+
+# def vBO = (Vol > vBOThresh*VolAvg) and (Vol > VolThresh);
+def vBO = Vol > Vol[1];
+
+plot pvBOPos = pBOPos and vbo;
+
+plot pvBONeg = pBONeg and vbo;
+
+
+pvBOPos.SetPaintingStrategy(PaintingStrategy.LINE);
+
+pvBOPos.SetDefaultColor(Color.Green);
+
+pvBONeg.SetPaintingStrategy(PaintingStrategy.LINE);
+
+pvBONeg.SetDefaultColor(Color.Red);
+
