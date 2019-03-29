@@ -1,0 +1,143 @@
+# Regular Trading Hours High and Low Reversals 
+
+# Mobius 
+
+# V01.08.20.2018 Chat Room Request 
+
+ 
+
+def h = high; 
+
+def l = low; 
+
+def c = close; 
+
+def x = BarNumber(); 
+
+def nan = double.nan; 
+
+def rth = getTime() >= RegularTradingStart(getYYYYMMDD()) and 
+
+          getTime() <= RegularTradingEnd(getYYYYMMDD()); 
+
+def LOD = if rth and !rth[1] 
+
+          then l 
+
+          else if rth and l < LOD[1] 
+
+               then l 
+
+               else LOD[1]; 
+
+def LOD_x = if l == LOD and rth 
+
+            then x 
+
+            else nan; 
+
+def LOD_h = if l == LOD 
+
+            then h 
+
+            else LOD_h[1]; 
+
+plot LOD_h_line = if x >= highestAll(LOD_x) 
+
+                  then highestAll(if isNaN(c[-1]) 
+
+                                  then LOD_h 
+
+                                  else nan) 
+
+                  else nan; 
+
+     LOD_h_line.SetDefaultColor(createColor(25,180,25)); 
+
+     LOD_h_line.hideBubble(); 
+
+     LOD_h_line.hideTitle(); 
+
+def upBar = if c crosses above LOD_H_line and RTH 
+
+            then x 
+
+            else upBar[1]; 
+
+plot ArrowUP = if x == highestAll(upBar) 
+
+               then l - (2*TickSize()) 
+
+               else nan; 
+
+     ArrowUP.SetPaintingStrategy(PaintingStrategy.Arrow_UP); 
+
+     ArrowUP.SetLineWeight(3); 
+
+     ArrowUP.SetDefaultColor(createColor(25,180,25)); 
+
+     ArrowUP.HideBubble(); 
+
+     ArrowUP.HideTitle(); 
+
+def HOD = if rth and !rth[1] 
+
+          then h 
+
+          else if rth and h > HOD[1] 
+
+               then h 
+
+               else HOD[1]; 
+
+def HOD_x = if h == HOD and rth 
+
+            then x 
+
+            else nan; 
+
+def HOD_l = if h == HOD 
+
+            then l 
+
+            else HOD_l[1]; 
+
+plot HOD_l_line = if x >= highestAll(HOD_x) 
+
+                  then highestAll(if isNaN(c[-1]) 
+
+                                  then HOD_l 
+
+                                  else nan) 
+
+                  else nan; 
+
+     HOD_l_line.SetDefaultColor(createColor(75, 55, 175)); 
+
+     HOD_l_line.HideTitle(); 
+
+     HOD_l_line.HideBubble(); 
+
+def dnBar = if c crosses below HOD_l_line 
+
+            then x 
+
+            else dnBar[1]; 
+
+plot ArrowDN = if x == highestAll(dnBar) 
+
+               then h + (2*TickSize()) 
+
+               else nan; 
+
+     ArrowDN.SetPaintingStrategy(PaintingStrategy.Arrow_DOWN); 
+
+     ArrowDN.SetLineWeight(3); 
+
+     ArrowDN.SetDefaultColor(createColor(75,55,175)); 
+
+     ArrowDN.HideBubble(); 
+
+     ArrowDN.HideTitle(); 
+
+# End Code 
