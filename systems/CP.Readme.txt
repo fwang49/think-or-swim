@@ -13,3 +13,31 @@ at the top..
 Scan In :
 but when you're setting it up.. it obviously starts w creating the scan, then the  'alerts when ...."   it will create it automatically in the Marketwatch tab.
 I learned the last part from Hahn.   But the other part was literally days saying to myself there has to be a way to only scan in my list.  i called TOS numerous times.. they said you can't do it. blah blah.. very helpful nice ppl - don't get me wrong, but there is soooo much on that platform
+
+orange.. we're going up
+red.. it's typically a bit late.. but we know to expect a retrace after..
+Compound Breakout is stoch, macd and ma's
+MTF MACD.. you can see the histogram and the arrows.
+and DMI/ADX.. and I use ADX (not the one that is included w DMI
+and ammo didn't have a green spike today - but a green spike is very powerful
+the CBT helps me stay in a trade.  the group i trade w we do a lot of swings.. and we also scalp.. ALL DAY
+
+
+
+@CP how do you use MTF MACD along with the spike indicator that you shared yesterday?
+signal is just a tad bit earlier.. In addition, the new signal from Carters room the ST_Compound Breakout tool.. he used 8, 17 , 9 .
+on a 1' chart -for me,  when I see a spike, i also want to see an arrow starting to form.
+or flashing.. .. just another indication that the down move is over..
+Did i talk about the ADX and DMI+  and -?
+
+i have ADX (I don't use the one that comes w DMI - I uncheck that one)  I have found that the ADX by itself seems to work better. ADX and DMI in same pane.   We call one signal a trifecta and the other difecta.   ADX needs to have some momo. if ADX stays on the bottom - the trades are sideways.. WHen ADX and DMI- are on the top of the range and both together, they make an upside ^  and upside down V.    it's a signal that you can go long.  the opposite is when ADX and DMI+ get to the top together - look for a possible short.
+i also change the input on ADX on the daily.. on daily it's 8
+if  you look at the charts for nflx, sq, baba, ba, cost, tsla, eog and blk   in the ON session and do your scans starting at least an hour before open, you can see the spikes, or arrows and ma's crossing. i loaded the blackdog, and like it too for confirmation.
+we took baba, cost and was already in 3 oil names, but still missed many others.
+create a workspace for pre market with 5 and 15' charts.. focus on those at open.
+I am not sure if all of these scans/study links are still working, but there are some nuggets of gold in some of these.
+
+https://www.google.com/amp/s/easycators.com/thinkorswim-downloads-free-indicators/%3famp
+
+
+
