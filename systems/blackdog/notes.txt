@@ -1,10 +1,14 @@
 After reading through the Black Dog System literature, I came up with the following
-script that should be used ONLY for the 5 minute Time Frame. It uses and Exponential Moving Average (EMA) to plot the highs/lows band instead of the plain average. Yellowish and Blueish arrows are the SESs (Standard Entry Signal). Yellowish arrows for closes above the band and blueish arrows for closes below the band.
+script that should be used ONLY for the 5 minute Time Frame. It uses and Exponential Moving Average (EMA) to plot the highs/lows band instead of the plain average. Yellowish and Blueish arrows are the SESs (Standard Entry Signal). 
+Yellowish arrows for closes above the band and blueish arrows for closes below the band.
 
-It plots WHITE Black Dogs, for both up and down crosses of the SLOW 100-period EMA by the Fast 20 period EMA instead of BLACK ones since I normally use a black background.
-These EMAs and their crosses are computed after changing the aggregation period to 20 minutes (4 times the base aggregation period of 5 minutes).
+It plots WHITE Black Dogs, for both up and down crosses of the SLOW 100-period EMA by the
+Fast 20 period EMA instead of BLACK ones since I normally use a black background.
+These EMAs and their crosses are computed after changing the aggregation period to 
+20 minutes (4 times the base aggregation period of 5 minutes).
 
-This script should be used only on 5 minute aggregation period charts. To use on a 15 or 60 minute chart, one should edit and rename this script and change the
+This script should be used only on 5 minute aggregation period charts. 
+To use on a 15 or 60 minute chart, one should edit and rename this script and change the
 
 def agg = AggregationPeriod.TWENTY_MIN;
 
@@ -16,4 +20,5 @@ or
 
 def agg = AggregationPeriod.FOUR_HOURS;
 
-There is not a 40-minute aggregation period constant for use with a 10-minute chart, but maybe one could use the "THIRTY_MIN" constant as a substitute
+There is not a 40-minute aggregation period constant for use with a 10-minute chart,
+but maybe one could use the "THIRTY_MIN" constant as a substitute
