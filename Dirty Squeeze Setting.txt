@@ -1,0 +1,20 @@
+The settings that John uses for the "Dirty Squeeze" as he likes to call it are as follows: 
+
+The bollinger Bands are: 
+Price: Close
+Length: 20
+NumDevsUp: 2
+NumDevsDn: -2
+Displace: 0
+
+The settings for the Keltner Channels are: 
+Price: Close
+Length: 20
+NumATRs: 1.5
+Displace: 0
+
+And the settings for the Momentum Oscillator are: 
+Price: Close
+Length: 14
+
+The Squeeze indicator is comprised of 3 separate indicators, the Bollinger Bands, Keltiner Channels, and a Momentum Oscillator. The strategy behind the squeeze is that when the bollinger bands are trading inside of the keltiner channels, the charted symbol is in a period of price consolidation. When the bollinger bands move outside of the keltiner channels, the squeeze has "fired", and the charted symbol has reverted to a period of vertical price discovery. The momentum oscillator is used to determine the direction of the movement. 
