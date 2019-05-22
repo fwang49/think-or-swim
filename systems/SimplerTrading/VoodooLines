@@ -1,0 +1,630 @@
+#
+# TTM Voodoo Lines with Stock Updates Version 3.0d
+# Software Revision: December 14, 2017
+# Stock data updated: March 12, 2018
+# Copyright (c) 2010 - 2018 David H. Starr
+#
+# This software is licensed for individual use only.
+#
+declare upper;
+declare once_per_bar;
+input Levels = 5;
+
+input Hide_Skyline_On = {Monthly, default Weekly, Daily, Hourly, None};
+input Hide_Snowline_On = {default Monthly, Weekly, Daily, Hourly, None};
+
+input Show_Label = {None, default "SPY Only", All};
+def sl;
+Switch (Show_Label) {
+    case None: 
+        sl = No;
+    Case "SPY Only":
+        sl = GetSymbol() == "SPY";
+    Case All:
+        sl = Yes;
+}
+AddLabel (sl, "VL Stock Updated 3/12/2018", Color.WHITE);
+
+def a1;
+def a2;
+
+switch (Hide_Skyline_On) {
+case Monthly:
+    a1 = AggregationPeriod.MONTH;
+case Weekly:
+    a1 = AggregationPeriod.WEEK;
+case Daily:
+    a1 = AggregationPeriod.DAY;
+case Hourly:
+    a1 = AggregationPeriod.HOUR;
+case None:
+    a1 = 2 * AggregationPeriod.MONTH;
+}
+
+switch (Hide_Snowline_On) {
+case Monthly:
+    a2 = AggregationPeriod.MONTH;
+case Weekly:
+    a2 = AggregationPeriod.WEEK;
+case Daily:
+    a2 = AggregationPeriod.DAY;
+case Hourly:
+    a2 = AggregationPeriod.HOUR;
+case None:
+    a2 = 2 * AggregationPeriod.MONTH;
+}
+
+def cp=CompoundValue (1, cp[1],
+if getSymbol() == "$DJI" then 0010366060646995 else
+if getSymbolPart(1) == "/YM" then 0000104080006460 else
+if getSymbol() == "DIA" then 0000103940006478 else
+if getSymbol() == "SPX" then 0001135100066679 else
+if getSymbolPart(1) == "/ES" then 0000045510002663 else
+if getSymbol() == "SPY" then 0000114030006710 else
+if getSymbol() == "COMP" then 0002586280126654 else
+if getSymbol() == "NDX" then 0002059420101886 else
+if getSymbolPart(1) == "/NQ" then 0000082350004071 else
+if getSymbol() == "QQQ" then 0000050280002468 else
+if getSymbol() == "RUT" then 0000535850034257 else
+if getSymbolPart(1) == "/RTY" then 0000054190003416 else
+if getSymbol() == "IWM" then 0000053790003426 else
+if getSymbol() == "OEX" then 0000525270031373 else
+if getSymbol() == "MID" then 0000731750039797 else
+if getSymbolPart(1) == "/EMD" then 0000073810003973 else
+if getSymbol() == "MDY" then 0000133420007255 else
+if getSymbol() == "$DJT" then 0003458230213421 else
+if getSymbol() == "$DXY" then 0000896200070700 else
+if getSymbolPart(1) == "/DX" then 0000179240014210 else
+if getSymbol() == "EUR/USD" then 0200959600082270 else
+if getSymbolPart(1) == "/6E" then 0200191920016454 else
+if getSymbol() == "EUR/JPY" then 0001045700094110 else
+if getSymbol() == "AUD/USD" then 0000800200044750 else
+if getSymbol() == "USD/JPY" then 0000841730075566 else
+if getSymbolPart(1) == "/6A" then 0000080020004475 else
+if getSymbolPart(1) == "/ZB" then 1000019880001457 else
+if getSymbolPart(1) == "/ZN" then 1000055950004099 else
+if getSymbolPart(1) == "/CL" then 0000041150000975 else
+if getSymbolPart(1) == "/NG" then 0000024900001045 else
+if getSymbolPart(1) == "/GC" then 0000103390002525 else
+if getSymbolPart(1) == "/SI" then 0000038840001680 else
+if getSymbolPart(1) == "/HG" then 0000027970001207 else
+if getSymbol() == "GBP/USD" then 0001293500105200 else
+if getSymbolPart(1) == "/6B" then 0000129350010520 else
+if getSymbol() == "NZD/USD" then 0000709700038970 else
+if getSymbol() == "USD/CAD" then 0001037840090552 else
+if getSymbolPart(1) == "/ZC" then 0000017480000744 else
+if getSymbolPart(1) == "/ZS" then 0000066400001606 else
+if getSymbolPart(1) == "/CC" then 0000024200000674 else
+if getSymbolPart(1) == "/KC" then 0000027350000830 else
+if getSymbolPart(1) == "/CT" then 0000084800002820 else
+if getSymbolPart(1) == "/ZW" then 0000022280001170 else
+if getSymbolPart(1) == "/SB" then 0000016280000229 else
+if getSymbolPart(1) == "/LE" then 0000033720002029 else
+if getSymbol() == "$DJAU" then 0000225050018058 else
+if getSymbol() == "$GBDOW" then 0000191940013413 else
+if getSymbol() == "$DEDOW" then 0000195170010534 else
+if getSymbol() == "$TWDOW" then 0000114610009429 else
+if getSymbol() == "$KRDOW" then 0000259020019232 else
+if getSymbol() == "$DJCHINA" then 0000395210022855 else
+if getSymbol() == "$HKDOW" then 0000248760013783 else
+if getSymbol() == "$CADOW" then 0000271800017753 else
+if getSymbol() == "$SGDOW" then 0000150390009432 else
+if getSymbol() == "$FRDOW" then 0000232830014607 else
+if getSymbol() == "AUD/JPY" then 0000667600055540 else
+if getSymbolPart(1) == "/HO" then 0000127000002700 else
+if getSymbolPart(1) == "/LE" then 0000036180005355 else
+if getSymbol() == "EUR/CAD" then 0001518250175079 else
+if getSymbol() == "EUR/GBP" then 0000652500056790 else
+if getSymbol() == "GBP/JPY" then 0201332450116828 else
+if getSymbol() == "AUD/NZD" then 0001319250137936 else
+if getSymbol() == "AUD/CAD" then 0000808940071634 else
+if getSymbolPart(1) == "/OJ" then 0000019510001292 else
+if getSymbol() == "AA" then 0000025500001842 else
+if getSymbol() == "AABA" then 0200018020000894 else
+if getSymbol() == "AAP" then 0000057080002403 else
+if getSymbol() == "AAPL" then 0000038920001117 else
+if getSymbol() == "ABT" then 1000043140002790 else
+if getSymbol() == "ADM" then 0000019740001353 else
+if getSymbol() == "AEP" then 0000030630001510 else
+if getSymbol() == "AFL" then 0100011460000541 else
+if getSymbol() == "AGN" then 1000050120001795 else
+if getSymbol() == "AIG" then 0000040000000660 else
+if getSymbol() == "AKS" then 0000045170007307 else
+if getSymbol() == "ALL" then 0200028730001377 else
+if getSymbol() == "AMBA" then 0000110170012919 else
+if getSymbol() == "AMGN" then 0000086920003057 else
+if getSymbol() == "AMZN" then 0000538890028400 else
+if getSymbol() == "ANF" then 0000070640008577 else
+if getSymbol() == "AOBC" then 0000007520000153 else
+if getSymbol() == "APA" then 0000128540014923 else
+if getSymbol() == "AXP" then 0000028450000971 else
+if getSymbol() == "AZO" then 0000222720008466 else
+if getSymbol() == "BA" then 0000105020002905 else
+if getSymbol() == "BABA" then 0000086420005720 else
+if getSymbol() == "BAC" then 0000018440005508 else
+if getSymbol() == "BAX" then 0000030970001818 else
+if getSymbol() == "BB" then 1000034520000139 else
+if getSymbol() == "BBBY" then 0000026740001623 else
+if getSymbol() == "BBY" then 0000025780001069 else
+if getSymbol() == "BEN" then 0000019240000987 else
+if getSymbol() == "BHP" then 0000086340010459 else
+if getSymbol() == "BIDU" then 0000042920000444 else
+if getSymbol() == "BIG" then 0000020120000188 else
+if getSymbol() == "BIIB" then 0000109630003721 else
+if getSymbol() == "BKE" then 0000003190000036 else
+if getSymbol() == "BKNG" then 0000415320004515 else
+if getSymbol() == "BMY" then 0000022530000706 else
+if getSymbol() == "BRK/B" then 0100074400004482 else
+if getSymbol() == "BWA" then 0000018390000739 else
+if getSymbol() == "BX" then 0200014440000355 else
+if getSymbol() == "C" then 0000228600055210 else
+if getSymbol() == "CAH" then 0000036590001992 else
+if getSymbol() == "CAT" then 0000064420002171 else
+if getSymbol() == "CB" then 0200055640003092 else
+if getSymbol() == "CBI" then 0000025880000464 else
+if getSymbol() == "CELG" then 0200056230001845 else
+if getSymbol() == "CF" then 0000022000000754 else
+if getSymbol() == "CHK" then 0000042200007400 else
+if getSymbol() == "CL" then 0000054000004050 else
+if getSymbol() == "CLF" then 0200085300012195 else
+if getSymbol() == "CMCSA" then 1000017060001110 else
+if getSymbol() == "CMG" then 1000155490002287 else
+if getSymbol() == "CMI" then 1000031770001770 else
+if getSymbol() == "COF" then 0000031800000780 else
+if getSymbol() == "COP" then 0000039890002201 else
+if getSymbol() == "COST" then 0200050120002617 else
+if getSymbol() == "CPB" then 0000035600002463 else
+if getSymbol() == "CRM" then 0200040030000520 else
+if getSymbol() == "CSCO" then 0000049530008200 else
+if getSymbol() == "CVS" then 1000022070001092 else
+if getSymbol() == "CVX" then 0000063160003066 else
+if getSymbol() == "DAL" then 0000014940000351 else
+if getSymbol() == "DATA" then 0000097670013134 else
+if getSymbol() == "DDD" then 0000019570000125 else
+if getSymbol() == "DE" then 1100047980002451 else
+if getSymbol() == "DEO" then 0000070960004093 else
+if getSymbol() == "DECK" then 0000052680001241 else
+if getSymbol() == "DG" then 0000033750001556 else
+if getSymbol() == "DIS" then 0000044340001514 else
+if getSymbol() == "DISH" then 0000024160000834 else
+if getSymbol() == "DO" then 0000075900011769 else
+if getSymbol() == "DRI" then 1000015580000450 else
+if getSymbol() == "DVN" then 0000085870012743 else
+if getSymbol() == "DWDP" then 0000018990000589 else
+if getSymbol() == "EA" then 0000028130001077 else
+if getSymbol() == "EBAY" then 0000028370000991 else
+if getSymbol() == "EEM" then 0000027280001822 else
+if getSymbol() == "EMR" then 0000037350002439 else
+if getSymbol() == "EOG" then 0200060720002251 else
+if getSymbol() == "ESRX" then 0000033280002138 else
+if getSymbol() == "ESV" then 0000062160008324 else
+if getSymbol() == "ETN" then 0000033530001501 else
+if getSymbol() == "ETR" then 0000046850001594 else
+if getSymbol() == "EXC" then 0000027600001892 else
+if getSymbol() == "F" then 0000004100000101 else
+if getSymbol() == "FB" then 0200072590001755 else
+if getSymbol() == "FCX" then 0000035600000288 else
+if getSymbol() == "FDX" then 0100079490003401 else
+if getSymbol() == "FFIV" then 0200046940000188 else
+if getSymbol() == "FLR" then 0000082870010136 else
+if getSymbol() == "FSLR" then 0000233970031700 else
+if getSymbol() == "GD" then 0000079000003528 else
+if getSymbol() == "GDX" then 0000050420006694 else
+if getSymbol() == "GE" then 0000031650004215 else
+if getSymbol() == "GILD" then 1000028250001586 else
+if getSymbol() == "GIS" then 0000021970001020 else
+if getSymbol() == "GLW" then 0000012300000736 else
+if getSymbol() == "GM" then 0000026270001872 else
+if getSymbol() == "GME" then 0000028350001532 else
+if getSymbol() == "GOOG" then 0000311700012245 else
+if getSymbol() == "GOOGL" then 0000317810012485 else
+if getSymbol() == "GPRO" then 0000064140009847 else
+if getSymbol() == "GRPN" then 0000009900001232 else
+if getSymbol() == "GS" then 0000081190004741 else
+if getSymbol() == "GWW" then 0000094970005886 else
+if getSymbol() == "HAL" then 0100026740001280 else
+if getSymbol() == "HD" then 0200053180001705 else
+if getSymbol() == "HES" then 0000087500013700 else
+if getSymbol() == "HON" then 0000048630002306 else
+if getSymbol() == "HPQ" then 0000027450003541 else
+if getSymbol() == "IBB" then 0000093360006916 else
+if getSymbol() == "ICE" then 0200024390000934 else
+if getSymbol() == "IBM" then 0000097100006950 else
+if getSymbol() == "IFF" then 0000051770002472 else
+if getSymbol() == "IGT" then 0000012040000681 else
+if getSymbol() == "ILMN" then 0000059660001882 else
+if getSymbol() == "INTC" then 0000035100002487 else
+if getSymbol() == "INTU" then 0000056460002016 else
+if getSymbol() == "ISRG" then 0200393920008486 else
+if getSymbol() == "JAZZ" then 0200054500000052 else
+if getSymbol() == "JNJ" then 0200066880004625 else
+if getSymbol() == "JPM" then 0000035100001496 else
+if getSymbol() == "K" then 0000032000002075 else
+if getSymbol() == "KBE" then 0000008900006041 else
+if getSymbol() == "KCE" then 0000055610007293 else
+if getSymbol() == "KIE" then 0000043970001430 else
+if getSymbol() == "KRE" then 0000023950001442 else
+if getSymbol() == "KO" then 0000029730001872 else
+if getSymbol() == "KORS" then 0000027580001022 else
+if getSymbol() == "LLY" then 0000042480002721 else
+if getSymbol() == "LMT" then 0000105380005741 else
+if getSymbol() == "LOW" then 0000027710001300 else
+if getSymbol() == "LULU" then 0000023250000216 else
+if getSymbol() == "LUV" then 0100013960000495 else
+if getSymbol() == "LVS" then 0000105120014876 else
+if getSymbol() == "M" then 0100010120000507 else
+if getSymbol() == "MA" then 0000036690001130 else
+if getSymbol() == "MAR" then 0000038750001188 else
+if getSymbol() == "MCD" then 0100034560001212 else
+if getSymbol() == "MDT" then 0000046660002406 else
+if getSymbol() == "MET" then 0000047730007123 else
+if getSymbol() == "MMM" then 0000090520004087 else
+if getSymbol() == "MNST" then 0000041020001026 else
+if getSymbol() == "MO" then 0100031270001902 else
+if getSymbol() == "MOMO" then 0000016740000672 else
+if getSymbol() == "MON" then 0000064130004461 else
+if getSymbol() == "MOS" then 0000092460016325 else
+if getSymbol() == "MRK" then 0000028120002005 else
+if getSymbol() == "MRO" then 0000031350004192 else
+if getSymbol() == "MS" then 0000054900007550 else
+if getSymbol() == "MSFT" then 0000031440001487 else
+if getSymbol() == "MU" then 0000073000009719 else
+if getSymbol() == "NFLX" then 0100069900000754 else
+if getSymbol() == "NKE" then 1000012690000646 else
+if getSymbol() == "NOC" then 0100096320003396 else
+if getSymbol() == "NOK" then 0000004540000127 else
+if getSymbol() == "NOV" then 0000035400000348 else
+if getSymbol() == "NSC" then 1000041900002669 else
+if getSymbol() == "NTES" then 0000068200001400 else
+if getSymbol() == "NVDA" then 0000039670000240 else
+if getSymbol() == "ORCL" then 0100014970000725 else
+if getSymbol() == "ORLY" then 0000080000002000 else
+if getSymbol() == "OXY" then 0000064000003993 else
+if getSymbol() == "PANW" then 0000080640003909 else
+if getSymbol() == "PBR" then 0000008700000234 else
+if getSymbol() == "PCLN" then 0000415320004515 else
+if getSymbol() == "PEP" then 0000058560004539 else
+if getSymbol() == "PFE" then 0000020360001162 else
+if getSymbol() == "PG" then 0000054770004393 else
+if getSymbol() == "PM" then 2000053910003204 else
+if getSymbol() == "PRU" then 0000046390001063 else
+if getSymbol() == "PSA" then 0000100560004535 else
+if getSymbol() == "QCOM" then 1000021440001160 else
+if getSymbol() == "REGN" then 0000141410001181 else
+if getSymbol() == "RF" then 0000018310004563 else
+if getSymbol() == "RIG" then 0200111950016300 else
+if getSymbol() == "RL" then 1100050620003122 else
+if getSymbol() == "RTN" then 0000060100003320 else
+if getSymbol() == "S" then 0000015920002467 else
+if getSymbol() == "SBUX" then 0000020000000336 else
+if getSymbol() == "SHOP" then 0000040990001848 else
+if getSymbol() == "SHW" then 0000116100004219 else
+if getSymbol() == "SINA" then 0000049500000102 else
+if getSymbol() == "SKX" then 0200014970000173 else
+if getSymbol() == "SLB" then 0000044440001670 else
+if getSymbol() == "SLG" then 0000029000000775 else
+if getSymbol() == "SO" then 1000016790001209 else
+if getSymbol() == "SPWR" then 0000013880000371 else
+if getSymbol() == "SSYS" then 0000030110000758 else
+if getSymbol() == "SWK" then 0000050830002261 else
+if getSymbol() == "SWKS" then 0200022070000357 else
+if getSymbol() == "T" then 0000034810005994 else
+if getSymbol() == "TEVA" then 0000054170007231 else
+if getSymbol() == "TEX" then 0000017920000734 else
+if getSymbol() == "TGT" then 0200037100002490 else
+if getSymbol() == "TIF" then 1000031310001670 else
+if getSymbol() == "TM" then 0000091970005541 else
+if getSymbol() == "TPR" then 0000028740001141 else
+if getSymbol() == "TRV" then 0000043630002300 else
+if getSymbol() == "TSLA" then 1200064720002552 else
+if getSymbol() == "TWX" then 0000041630001816 else
+if getSymbol() == "TWTR" then 0000058270007473 else
+if getSymbol() == "TXN" then 0000036590001310 else
+if getSymbol() == "UA" then 0000041470000597 else
+if getSymbol() == "ULTA" then 0000048600000311 else
+if getSymbol() == "UNH" then 1200029690001618 else
+if getSymbol() == "UNP" then 0000039310001664 else
+if getSymbol() == "UPS" then 0000057890003799 else
+if getSymbol() == "USB" then 0000012190000226 else
+if getSymbol() == "UTX" then 1000038880002005 else
+if getSymbol() == "V" then 1000024300001045 else
+if getSymbol() == "VIPS" then 0000038460000412 else
+if getSymbol() == "VRX" then 0000057240000565 else
+if getSymbol() == "VZ" then 1000034560002013 else
+if getSymbol() == "WBA" then 0000040690002128 else
+if getSymbol() == "WFC" then 0000017500000763 else
+if getSymbol() == "WHR" then 0000049960001919 else
+if getSymbol() == "WMB" then 0000011470000078 else
+if getSymbol() == "WMT" then 0200017000000250 else
+if getSymbol() == "WPM" then 0000029790004760 else
+if getSymbol() == "WY" then 0000047600006062 else
+if getSymbol() == "WYNN" then 0000193640024825 else
+if getSymbol() == "X" then 0100133690019600 else
+if getSymbol() == "XBI" then 0000058380004416 else
+if getSymbol() == "XES" then 0000039020005210 else
+if getSymbol() == "XHB" then 0200014280000800 else
+if getSymbol() == "XLB" then 0000028660001783 else
+if getSymbol() == "XLE" then 0000054820003740 else
+if getSymbol() == "XLF" then 0100010620000477 else
+if getSymbol() == "XLI" then 0000038980001514 else
+if getSymbol() == "XLK" then 0000024160001294 else
+if getSymbol() == "XLNX" then 0000029400001428 else
+if getSymbol() == "XLP" then 0000029770001782 else
+if getSymbol() == "XLU" then 0000032060002248 else
+if getSymbol() == "XLV" then 0000033160002163 else
+if getSymbol() == "XLY" then 0000036130001585 else
+if getSymbol() == "XME" then 0000075370009609 else
+if getSymbol() == "XOM" then 1000037800002975 else
+if getSymbol() == "XOP" then 0000045950002289 else
+if getSymbol() == "XPH" then 0200026070001168 else
+if getSymbol() == "XRT" then 0200022820000741 else
+if getSymbol() == "XRX" then 0000026390003852 else
+if getSymbol() == "XSD" then 0000052660001981 else
+if getSymbol() == "YELP" then 0000027740001410 else
+if getSymbol() == "YNDX" then 0000035000004542 else
+if getSymbol() == "YUM" then 0000033440002150 else
+if getSymbol() == "ZNGA" then 0000013190001591 else
+Double.NaN);
+
+
+def cc = (Floor(cp / 1000000000000000));
+def pj = (Floor((cp - cc * 1000000000000000) / 100000000000000));
+def End = (Floor((cp - cc * 1000000000000000 - pj * 100000000000000) / 10000000) * TickSize());
+def bg = ((cp - cc * 1000000000000000 - pj * 100000000000000 - End * 10000000 / TickSize()) * TickSize());
+def bi = (if pj == 0 then bg else if pj == 2 then bg + 0.61803 * (End - bg) else End);
+def ei = (if pj == 0 then End else if pj == 2 then bi + End - bg else End + End - bg);
+script fire {
+    input Num = 1;
+    input cc = 1;
+    input bi = 1.0;
+    input ei = 1.0;
+    plot fire = if cc == 0 && Num == 1 then bi else if cc == 0 && Num == 1 then ei else if cc == 0 then bi + Power(1.61803, Num - 2) * (ei - bi) else if Num == 1 then bi else if Num == 2 then ei else bi * Power(1.61803, Num - 2) * (ei / bi);
+}
+
+def level = if(IsNaN(Close), level[1], Close);
+def sec = if fire(2, cc, bi, ei) * Sign(ei - bi) > level * Sign(ei - bi) then 1 else 
+if fire (3, cc, bi, ei) * Sign(ei - bi) > level * Sign(ei - bi) then 2 else 
+if fire (4, cc, bi, ei) * Sign(ei - bi) > level * Sign(ei - bi) then 3 else
+if fire (5, cc, bi, ei) * Sign(ei - bi) > level * Sign(ei - bi) then 4 else 5;
+
+def adj = if sec == 1 then 1 else if sec == 5 then -1 else if level*sign(ei-bi) > (fire(sec, cc, bi, ei) + fire(sec + 1, cc, bi, ei))*sign(ei-bi) / 2 then 1 else -1;
+
+def pp1 = fire(sec, cc, bi, ei);
+def pp2 = fire(sec + 1, cc, bi, ei);
+def pp3 = fire(sec + adj, cc, bi, ei);
+def pp4 = fire(sec + adj + 1, cc, bi, ei);
+
+plot p1 = fire(1, cc, bi, ei);
+plot p2 = fire(2, cc, bi, ei);
+plot p3 = fire(3, cc, bi, ei);
+plot p4 = fire(4, cc, bi, ei);
+plot p5 = fire(5, cc, bi, ei);
+plot p6 = fire(6, cc, bi, ei);
+
+
+script z {
+    input dl = 1;
+    input ml = 1;
+    input sec = 1;
+    input l1 = 1.0;
+    input l2 = 2.0;
+    plot p = if dl >= ml then l1 + Power(0.61803, 3 - sec) * (l2 - l1) else Double.NaN;
+}
+def l = Min(Levels, Min( If (GetAggregationPeriod() < a1, 5, 3), If (GetAggregationPeriod() < a2, 5, 2)));
+
+Plot s1=z(l,2,1,p1,p2);
+Plot s2=z(l,2,2,p1,p2);
+Plot s3=z(l,2,1,p2,p3);
+Plot s4=z(l,2,2,p2,p3);
+Plot s5=z(l,2,1,p3,p4);
+Plot s6=z(l,2,2,p3,p4);
+Plot s7=z(l,2,1,p4,p5);
+Plot s8=z(l,2,2,p4,p5);
+Plot s9=z(l,2,1,p5,p6);
+Plot s10=z(l,2,2,p5,p6);
+
+def ss1=z(l,2,1,pp1,pp2);
+def ss2=z(l,2,2,pp1,pp2);
+def ss3=z(l,2,1,pp3,pp4);
+def ss4=z(l,2,2,pp3,pp4);
+
+Plot T1 = z(l, 3, 1, pp1, ss1);
+plot T2 = z(l, 3, 2, pp1, ss1);
+plot T3 = z(l, 3, 1, ss1, ss2);
+plot T4 = z(l, 3, 2, ss1, ss2);
+plot T5 = z(l, 3, 1, ss2, pp2);
+plot T6 = z(l, 3, 2, ss2, pp2);
+
+plot T7 = z(l, 3, 1, pp3, ss3);
+plot T8 = z(l, 3, 2, pp3, ss3);
+plot T9 = z(l, 3, 1, ss3, ss4);
+plot T10 = z(l, 3, 2, ss3, ss4);
+plot T11 = z(l, 3, 1, ss4, pp4);
+plot T12 = z(l, 3, 2, ss4, pp4);
+
+plot Q1 = z(l, 4, 1, pp1, T1);
+plot Q2 = z(l, 4, 2, pp1, T1);
+plot Q3 = z(l, 4, 1, T1, T2);
+plot Q4 = z(l, 4, 2, T1, T2);
+plot Q5 = z(l, 4, 1, T2, ss1);
+plot Q6 = z(l, 4, 2, T2, ss1);
+plot Q7 = z(l, 4, 1, ss1, T3);
+plot Q8 = z(l, 4, 2, ss1, T3);
+plot Q9 = z(l, 4, 1, T3, T4);
+plot Q10 = z(l, 4, 2, T3, T4);
+plot Q11 = z(l, 4, 1, T4, ss2);
+plot Q12 = z(l, 4, 2, T4, ss2);
+plot Q13 = z(l, 4, 1, ss2, T5);
+plot Q14 = z(l, 4, 2, ss2, T5);
+plot Q15 = z(l, 4, 1, T5, T6);
+plot Q16 = z(l, 4, 2, T5, T6);
+plot Q17 = z(l, 4, 1, T6, pp2);
+plot Q18 = z(l, 4, 2, T6, pp2);
+
+plot Q19 = z(l, 4, 1, pp3, T7);
+plot Q20 = z(l, 4, 2, pp3, T7);
+plot Q21 = z(l, 4, 1, T7, T8);
+plot Q22 = z(l, 4, 2, T7, T8);
+plot Q23 = z(l, 4, 1, T8, ss3);
+plot Q24 = z(l, 4, 2, T8, ss3);
+plot Q25 = z(l, 4, 1, ss3, T9);
+plot Q26 = z(l, 4, 2, ss3, T9);
+plot Q27 = z(l, 4, 1, T9, T10);
+plot Q28 = z(l, 4, 2, T9, T10);
+plot Q29 = z(l, 4, 1, T10, ss4);
+plot Q30 = z(l, 4, 2, T10, ss4);
+plot Q31 = z(l, 4, 1, ss4, T11);
+plot Q32 = z(l, 4, 2, ss4, T11);
+plot Q33 = z(l, 4, 1, T11, T12);
+plot Q34 = z(l, 4, 2, T11, T12);
+plot Q35 = z(l, 4, 1, T12, pp4);
+plot Q36 = z(l, 4, 2, T12, pp4);
+
+p1.SetDefaultColor(Color.RED);
+p2.SetDefaultColor(Color.RED);
+p3.SetDefaultColor(Color.RED);
+p4.SetDefaultColor(Color.RED);
+p5.SetDefaultColor(Color.RED);
+p6.SetDefaultColor(Color.RED);
+
+s1.SetDefaultColor(Color.GREEN);
+s2.SetDefaultColor(Color.GREEN);
+s3.SetDefaultColor(Color.GREEN);
+s4.SetDefaultColor(Color.GREEN);
+s5.SetDefaultColor(Color.GREEN);
+s6.SetDefaultColor(Color.GREEN);
+s7.SetDefaultColor(Color.GREEN);
+s8.SetDefaultColor(Color.GREEN);
+s9.SetDefaultColor(Color.GREEN);
+s10.SetDefaultColor(Color.GREEN);
+
+T1.SetDefaultColor(Color.WHITE);
+T2.SetDefaultColor(Color.WHITE);
+T3.SetDefaultColor(Color.WHITE);
+T4.SetDefaultColor(Color.WHITE);
+T5.SetDefaultColor(Color.WHITE);
+T6.SetDefaultColor(Color.WHITE);
+T7.SetDefaultColor(Color.WHITE);
+T8.SetDefaultColor(Color.WHITE);
+T9.SetDefaultColor(Color.WHITE);
+T10.SetDefaultColor(Color.WHITE);
+T11.SetDefaultColor(Color.WHITE);
+T12.SetDefaultColor(Color.WHITE);
+
+Q1.SetDefaultColor(Color.VIOLET);
+Q2.SetDefaultColor(Color.VIOLET);
+Q3.SetDefaultColor(Color.VIOLET);
+Q4.SetDefaultColor(Color.VIOLET);
+Q5.SetDefaultColor(Color.VIOLET);
+Q6.SetDefaultColor(Color.VIOLET);
+Q7.SetDefaultColor(Color.VIOLET);
+Q8.SetDefaultColor(Color.VIOLET);
+Q9.SetDefaultColor(Color.VIOLET);
+Q10.SetDefaultColor(Color.VIOLET);
+Q11.SetDefaultColor(Color.VIOLET);
+Q12.SetDefaultColor(Color.VIOLET);
+Q13.SetDefaultColor(Color.VIOLET);
+Q14.SetDefaultColor(Color.VIOLET);
+Q15.SetDefaultColor(Color.VIOLET);
+Q16.SetDefaultColor(Color.VIOLET);
+Q17.SetDefaultColor(Color.VIOLET);
+Q18.SetDefaultColor(Color.VIOLET);
+Q19.SetDefaultColor(Color.VIOLET);
+Q20.SetDefaultColor(Color.VIOLET);
+Q21.SetDefaultColor(Color.VIOLET);
+Q22.SetDefaultColor(Color.VIOLET);
+Q23.SetDefaultColor(Color.VIOLET);
+Q24.SetDefaultColor(Color.VIOLET);
+Q25.SetDefaultColor(Color.VIOLET);
+Q26.SetDefaultColor(Color.VIOLET);
+Q27.SetDefaultColor(Color.VIOLET);
+Q28.SetDefaultColor(Color.VIOLET);
+Q29.SetDefaultColor(Color.VIOLET);
+Q30.SetDefaultColor(Color.VIOLET);
+Q31.SetDefaultColor(Color.VIOLET);
+Q32.SetDefaultColor(Color.VIOLET);
+Q33.SetDefaultColor(Color.VIOLET);
+Q34.SetDefaultColor(Color.VIOLET);
+Q35.SetDefaultColor(Color.VIOLET);
+Q36.SetDefaultColor(Color.VIOLET);
+
+p1.SetLineWeight(2);
+p2.SetLineWeight(2);
+p3.SetLineWeight(2);
+p4.SetLineWeight(2);
+p5.SetLineWeight(2);
+p6.SetLineWeight(2);
+s1.SetLineWeight(2);
+s2.SetLineWeight(2);
+s3.SetLineWeight(2);
+s4.SetLineWeight(2);
+s5.SetLineWeight(2);
+s6.SetLineWeight(2);
+s7.SetLineWeight(2);
+s8.SetLineWeight(2);
+s9.SetLineWeight(2);
+s10.SetLineWeight(2);
+p1.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+p2.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+p3.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+p4.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+p5.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+p6.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s1.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s2.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s3.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s4.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s5.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s6.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s7.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s8.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s9.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+s10.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t1.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t2.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t3.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t4.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t5.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t6.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t7.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t8.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t9.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t10.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t11.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+t12.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q1.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q2.SetPaintingStrategy(paintingStrategy.HORIZONTAL);;
+Q3.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q4.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q5.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q6.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q7.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q8.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q9.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q10.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q11.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q12.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q13.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q14.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q15.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q16.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q17.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q18.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q19.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q20.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q21.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q22.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q23.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q24.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q25.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q26.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q27.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q28.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q29.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q30.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q31.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q32.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q33.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q34.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q35.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
+Q36.SetPaintingStrategy(paintingStrategy.HORIZONTAL);
